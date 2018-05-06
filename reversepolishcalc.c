@@ -23,6 +23,6 @@
         printf("\t%.8g,n11", stack[top--])
     else if (top> 1) {
         printf("error: too many operands,\n")
-        top =0
+        top=0
     }
 }
