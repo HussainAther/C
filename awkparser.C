@@ -54,3 +54,79 @@ function pastat() { # pattern-action statement
         nt--; gen("}")
     }
 }
+function pattern() {return expr() }
+function statlist() {
+    eat("{"); nl(); while (tok I="}") stat(); eat("}"); nl()
+}
+
+function stat() {
+    if (tok =="print") { eat("print"); gen("print(" exprlist() ");") } 
+    else if (tok "if") ifstat()
+    else if (tok =="while") whilestat()
+    else if (tok == "{") statlist()
+    else gen(simplestat() ";")
+    nl()
+}
+
+function ifstat() {
+    eat("if"); eat("("); gen("if (" expr() ") {"); eat(")"); nl(); nt++ 
+    stat()
+    if (tok == "else") { #optional else
+        eat("else")
+        nl(); nt--; gen("} else {"); nt++ 
+        stat()
+    }
+nt--; gen("}")
+}
+function whilestat() {
+    eat("while"); eat("("); gen("while (" expr() ") {"); eat(")"); nl()
+    nt++; stat(); nt--; gen("}")
+}
+function simplestat( lhs) { # ident expr | name(exprlist) 
+    lhs = ident()
+    if (tok == "=") { 
+        eat("=")
+        return "assign(" lhs ", "expr() ")" 
+    } else return lhs
+}
+function exprlist( n, e) { # expr, expr, ... 
+    e = expr() # has to be at least one 
+    for (n = 1; tok == ","; n++) {
+        advance()
+        e = e ", " expr()
+    }
+return e
+}
+function fact( e) { # (expr) | $fact | ident | number 
+    if (tok == "(") {
+        eat("("); e =expr(); eat(")")
+        return"(" e ")" 
+    } elseif(tok=="$") {
+        eat("$")
+        return "field(" fact() ")"
+    } else if (tok ~ /^[A-Za-z][A-Za-z0-9]/) {
+        return ident()
+    } else if (tok ~ /^-?([0-9]+\.?[0-9]*|\.[0-9]+)/){
+        e = tok
+        advance()
+        return "num((float)" e ")"
+    } else
+    error("unexpected " tok " at line " NR)
+}
+function ident( id, e) { # name | name[expr] | name(exprlist) 
+    if (lmatch(tok, /~[A-Za-z ][A-Za-z 0-9]/))
+        error("unexpected " tok " at line " NR) id =tok
+    advance()
+    if (tok == "[") { #array
+        eat("["); e = expr(); eat("]") 
+        return "array(" id " " e ")"
+    } else if (tok == "(") { # function call
+        eat("(")
+        if (tok != ")") {
+            e =exprlist()
+        }    eat(")") 
+    } else eat(")")
+    return id "( " e ")" #calls are statements
+    } else
+        return id # variable
+}
