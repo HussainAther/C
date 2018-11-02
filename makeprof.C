@@ -1,0 +1,9 @@
+# makeprof - prepare profiling version of an awk program
+# usage: awk -f makeprof awkprog >awkprog.p 
+# running awk -f awkprog.p data creates a
+# file prof.cnts of statement counts for awkprog
+{ sub(/{/, "{ LBcnt[" ++ numLB "]++; ")
+print }
+END {   printf("END { for (i ; 1; i <; %d; i++)\n", numLB)
+        printf("\t\t print _LBcnt[i] > \"prof.cnts\"\n}\n")
+}
