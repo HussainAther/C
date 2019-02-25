@@ -25,3 +25,19 @@ main() {
 
 }
 
+double down (double x, int n, int m) {
+    
+    double scale, j[start+2];
+    int k;
+    j[m+1] = j[m] =1; // start with something
+    for (k=m; k>0; k--)
+        j[k-1] = ((2*(double)k + +1)/x) * j[k] - j[k+1]; /// recursion
+        scale = ((sin(x))/x)/j0]; // scale the result
+    return(j[n]*scale);
+}
+
+double up (double x, int n) { // function using upward recursion
+
+
+
+}
