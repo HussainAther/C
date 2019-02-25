@@ -13,3 +13,16 @@
 #define kt 100.0 // temperature
 #define J=1 // exchange energy
 #define seed 6811 // random seed
+
+main() {
+    int i, j, element, array[max];
+    double olden, newen;
+    double energy(int array[]);
+    
+    FILE *output1, *output2;
+    output1 = fopen("spin-up.dat", "w");
+    output2 = fopen("spin-down.dat", "w");
+    srand48(seed);
+    
+    for (i=0; i<max; i++) array[i] = 1;
+}
