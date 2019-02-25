@@ -24,4 +24,14 @@ main() {
     }
     cons = thc/(sph*rho); // material constants
     for (i = 1; i <=max; i++) { // loop over space
+        for (j =1; j<(size-1); j++)
+        {u[j][1] = u[j][0] + cons*(u[j+1][0]+u[j-1][0]-2*u[j][0]);} // save every 1000 steps
+        if ((i%1000 == 0) || (i ==1)) {
+            for (j =0; j<size; j++) fprintf(output, "%f\n", u[j][1]);
+            fprintf(output, "\n"); // empty lien for gnuplot
+        }
+        for (j=0; j<size; j++) u[j][0] = u[j][1]
+    }
+    printf("data stored in eqheat.dat\n")
+    fclose(output)
 }
