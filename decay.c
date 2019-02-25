@@ -14,8 +14,8 @@ output = fopen ("decay.dat" ,"w") ;
 number = nloop = max;  // initial value
 srand48 ( seed ) ; // seed number generator
 for (time=0; time<=time_max; time++) { // time loop
-for (atom=1; atom<=number; atom++) { decay = drand48 ( ) ;  // atom loop
-if (decay < lambda) nloop−−; // an atom decays
+    for (atom=1; atom<=number; atom++) { decay = drand48 ( ) ;  // atom loop
+        if (decay < lambda) nloop−−; // an atom decays
 }
 number = nloop ;
 fprintf (output , "%d\t%f\n", time ,
