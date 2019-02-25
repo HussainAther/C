@@ -13,5 +13,10 @@
 
 main() {
     int i, hit[200], dist, r, x, y, oldx, oldy;
+    double pp, prob;
+    FILE *output;
+    output = fopen("column.dat", "w")
+    srand48(seed); // seed rng
+    
     
 }
