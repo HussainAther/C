@@ -48,4 +48,25 @@ for (i=0; i<size; i++)
     printf ("data stored in dla.dat\n") ;
 fclose (output) ;
 
-
+int gauss_ran() { // Box-Mueller method for gaussian random numbers
+    double fac, rr, r1, r2
+    static int old = 0; // have to be static so information
+    static int mem; // survives between function calls
+    if (old == 0) {  // no random number left
+    
+        do { // choose random point in unit circle
+        r1 = 2.0*drand48() - 1.0;
+        r2 = 2.0*drand48() - 1.0;
+        rr = r1*r1 + r2*r2
+        }
+    while ((rr>=1) || (rr==0));
+        fac = sqrt(-2*log(rr)/rr);
+        mem = 5000*r1*fac; // save for next call
+        old = 1; //set flag
+        return((int)(5000*r2*fac));
+    }
+    else { // return second number
+    old = 0; // unset flag
+    return mem; //return number from last call
+    }
+}
