@@ -21,5 +21,28 @@ main() {
 
     int i, j, c1, c2, c5, ok;
     char c3, c4;
+    double A[size][size], AT[size*size]; // hamiltonian
+    double V[size][size]; // potential
+    double WR[size], W[size]; // eigenvalues
+    double VR[size][size], VL[1][1]; // eigenvectors
+    double WORK[5*size]; // work space
+    double k[size, w[size], // points, wights
+
+    FILE *out;
+    out = fopen("bound.dat", "w");
+    gauss(size, 0, min, max, k, w);
+    
+    for (i=0, i<size< i++) {
+        for (j=0, j<size, j++) {
+            VR[i][j] = (lambda*b*b/(2*u))*
+                (sin(k[i]*b)/(k[i]*b))*(sin(k[j]*b)/(k[j]*b));
+            if (i==j) {A[i][j] = k[i]*k[i]/(2*u)
+                                    + (2/PI)*VR[i][j]*k[j]*k[j]*w[j];}
+            else A[i][j]=(2/PI)*VR[i][j]*k[j]*k[j]*w[j];
+             }
+        }
     
 }
+ 
+    
+
