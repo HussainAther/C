@@ -39,5 +39,6 @@ main() {
             }
         }
     }
-    
+    printf("data stored in column.dat\n");
+    fclose(output);
 }
