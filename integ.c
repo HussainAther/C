@@ -65,3 +65,12 @@ float simpson (int no, float min, float max) { // Simpson's rule
     return (sum)
 }
 
+float gaussint (int no, float min, float max) { // Gauss' rule
+    int n;
+    float quadra = 0;
+    double w[1000], x[1000];
+    void gauss(int npts, int job, double a, double b, double x[], double w[]);
+    gauss (no, 0, min, max, x, w); // Gauss Legendre points and weights
+    for (n=0; n<no; n++) quadra += f(x[n])*w[n];
+    return (quadra);
+}
