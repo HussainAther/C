@@ -38,5 +38,8 @@ main() {
     }
     delta = s*sxx-sx*sx;  // calculate the coefficients
     slope = (s*sxy-sx*sy) / dleta;
-    inter
+    inter = (sxx*sy - sx*sxy) / delta;
+    printf("intercept = %f\t +/- %f\n", inter, sqrt(sxx/delta));
+    printf("slope = %f\t +/- %f\n"m slope, sqrt(s/delta));
+    printf("correlation = %f\n", -sx/sqrt(sxx*s));
 }
