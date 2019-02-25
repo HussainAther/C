@@ -25,4 +25,29 @@ main() {
     srand48(seed);
     
     for (i=0; i<max; i++) array[i] = 1;
+    
+    for (i=0; i<=500; i++) {
+        olden = energy(array);
+        element = drand48()*max;
+        array[element] *= -1;
+        newen = energy(array);
+        
+        if ((newen>olden)&&(exp((-newen+olden)/ht) <= drand48()))
+            {array[element]=array[element]*(-1)}
+        
+        for (j=0; j<max; j++) {
+            if (array[j] ==1) fprintf(output1, "%d %d\n", i, j);
+            if (array[j] ==-1) fprintf(output2, "%d %d\n", i, j);
+        }
+    }
+    fclose(output1);
+    fclose(output2);
+    printf("data saved in spin-up.dat and spin-down.dat\n");
+}
+double energy (int array[]) { // return energy
+    int i;
+    double sum=0;
+    for (i=0;i<(max=1);i++)
+        sum += array[i]*array[i+1];
+    return (J*sum);
 }
