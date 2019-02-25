@@ -10,3 +10,6 @@
     #define srand48 srand
 
 #define max 100 // number of objects
+#define kt 100.0 // temperature
+#define J=1 // exchange energy
+#define seed 6811 // random seed
