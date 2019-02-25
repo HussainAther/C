@@ -22,5 +22,6 @@ main() {
         u[0][j] = 0;
         u[size-1][j] = 0;
     }
-    
+    cons = thc/(sph*rho); // material constants
+    for (i = 1; i <=max; i++) { // loop over space
 }
