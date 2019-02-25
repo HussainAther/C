@@ -37,7 +37,15 @@ double down (double x, int n, int m) {
 }
 
 double up (double x, int n) { // function using upward recursion
-
-
-
+    double one, two, thr;
+    int k;
+    one = (sin(x))/x;
+    two = (sin(x) - x*cos(x))/(x*x);
+    
+    for (k=1; k<n; k+=1) {
+        thr = ((2*k + 1)/x)*two - one; // recurrence relation
+        one = two;
+        two = thr;
+    }
+    return(thr);
 }
