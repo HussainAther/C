@@ -20,18 +20,32 @@ main ( ) {
     output = fopen ("dla.dat" ,"w") ;  // save data in dla.dat
                                         // clear
     for (i=0; i<size; i++) for (j=0; j<size; j++) grid[i][j] = 0;
-    grid[200][200] = 1;
+    grid[200][200] = 1; // one particle at the center
     
     srand48 ( seed ) ; // seed rng
-for (i=0; i<max; i++) {
-hit=0;
-angle = (2*PI*drand48() ) ;
-x = (200+rad*cos(angle));
-y = (200+rad*sin(angle));
-dist = gauss_ran () ;
-if (dist<0) step = −1; else step = 1;
-// one particle at the center // seed number generator
-// choose starting point
-// random angle // coordinates
-// random number gaussian dist // move forwards or backwards
-                                                trav =0;
+    for (i=0; i<max; i++) { // choose starting point
+        hit=0;
+        angle = (2*PI*drand48() ) ; // random angle
+        x = (200+rad*cos(angle));  // coordinates
+        y = (200+rad*sin(angle));
+        dist = gauss_ran () ; // random number gaussian dist
+        
+        if (dist<0) step = −1; // move forwards or backwards
+            else step = 1;
+        trav =0;
+        while (( hit == 0) && (x<399) && (x>1) && (y<399) && (y>1) &&
+            (trav<abs(dist))) {
+        if (grid[x+1][y]+grid[x−1][y]+grid[x][y+1]+grid[x][y−1]>= 1) { // one neighbor is occupied
+    hit=1; grid[x][y] = 1;   // particle sticks, walk is over
+    } else if (drand48() < 0.5) x+=step; // move horizontally
+    else y+=step; // move vertically
+trav++; }
+}
+
+for (i=0; i<size; i++)
+    for (j=0; j<size; j++)
+        if (grid[i][j] == 1) fprintf(output,"%d\t%d\n", i, j);
+    printf ("data stored in dla.dat\n") ;
+fclose (output) ;
+
+
