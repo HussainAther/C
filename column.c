@@ -17,6 +17,7 @@ main() {
     FILE *output;
     output = fopen("column.dat", "w")
     srand48(seed); // seed rng
+    for (i=0; i<npoints; i++) hit[i] = 0; // clear the array
     
     
 }
