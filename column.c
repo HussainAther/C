@@ -10,3 +10,8 @@
 #define max 100000 // iterations
 #define npoints 200 // no. of open spaces
 #define seed 6811
+
+main() {
+    int i, hit[200], dist, r, x, y, oldx, oldy;
+    
+}
