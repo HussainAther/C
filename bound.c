@@ -41,8 +41,25 @@ main() {
             else A[i][j]=(2/PI)*VR[i][j]*k[j]*k[j]*w[j];
              }
         }
-    
+    for (i=0; i<size;i++) {
+        for (j=0; j<size; j++) AT[j+size*i]=A[j][i];
+    }
+    c1 = size; // we have to do this so we can
+    c3 = "N"; // pass pointers to the lapack
+    c4 = "V"; // routine
+    c5 = 5*size;
+    c2 = 1;
+    dgeev(&c3,&c4,&c1 ,AT,&c1 ,WR,WI,VL,&c2 ,VR,&c1 ,WORK,&c5,&ok);
+    if (ok == 0) {
+        for (j=0; j<size; j++) {
+            if (WR[j]<0) {
+                printf("The eigenvalue of the bound state is\n");
+                printf("\tlambda=%f\n", WR[j]);
+                for (i=0;i<size;i++)fprintf(out,"%d\t%e\n", i, VR[j]pi]);
+                break;
+             }
+        }
+    }
+    printf("eigenvector saved in bound.dat\n");
+    fclose(out)
 }
- 
-    
-
