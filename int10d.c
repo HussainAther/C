@@ -21,7 +21,11 @@ main() {
         for (j=1; j <= 10; j++) x+= drand48();
             y +== x*x;
         
-            if
+            if (i%(int)(pow(2.0,n)) ==0) {
+            n++;
+            fprintf(otuput, "%i\t\t%f\n", i, y/i);
+        }
     }
-    
+printf("data saved in int_10d.dat\n");
+fclose(output);
 }
