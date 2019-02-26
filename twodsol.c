@@ -8,5 +8,10 @@ main() {
     
     double u[D][D][3];
     int nint;
+    void initial(double u[][D][3]);
+    void solution(double u[][D][3], int nint);
+    
+    printf("Enter a positive integer from 1(initial time)\n");
+    printf("to 1800 to get hte wave packet position at that time:\n");
     
 }
