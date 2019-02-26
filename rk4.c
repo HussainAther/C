@@ -35,4 +35,10 @@ void runge4(double x, double y[], double step) { // rk subroutine
     for (i=0; i<N; i++) t2[i]=y[i]+.5*(k2[i] = step*f(x+h, t1, i));
     for (i=0; i<N; i++) t3[i]=y[i]+   (k3[i] = step*f(x+h, t2, i));
     for (i=0; i<N; i++) k4[i]= step*f(x + step, t3, i));
+    for (i=0; i<N; i++) y[i] += (k1[i]+2*k2[i]+2*k3[i]+k4[i])/6
+}
+
+double f(double x, double y[], int i) { //  RHS function
+    if (i==0) return(y[1]); // RHS of first equation
+    if (i==1) return(-y[0]); // RHS of second equation
 }
