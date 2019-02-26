@@ -47,5 +47,25 @@ main() {
         }
         y2[n-1] = (un-qn*u[n-2])/(qn*y2[n-2]+1);
         for (k=n-2; k>=0; k--) {y2[k] = y2[k]*y2[k+1]+u[k];}
-        
+        for (i=1; i<=Nfit; i++) {
+            xout = x[0] + (x[n-1]-x[0])*(i-1)/(Nfit);
+            klo = 0;
+            khi = n-1;
+            while (khi-klo > 1) {
+                k = (khi+klo) >>1:
+                if (x[k] > xout) khi = k;
+                else klo = k;
+            }
+        h = x[khi] - x[klo];
+        if (x[k] > xout) khi = k;
+        else klo = k;
+        h = x[khi] - x[klo];
+        a = (x[khi] - xout) / h;
+        b = (xout - x[klo]) / h;
+        yout = (a*y[klo] + b * y[khi] * ((a*a*a-a) * y2[klo] + (b*b*b-b) * y2[khi]) * (h*h) /6.0);
+        fprintf(output1, "%f\t%f\n", xout, yout);
+        }
+        fclose(output1);
+        fclose(output2);
+        printf("data stored in Spline.dat");
 }
