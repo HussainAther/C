@@ -17,4 +17,7 @@ main() {
     FILE *output;
     output = fopen("qmc.dat", "w");
     srand48(seed);
+    for (j=0; j<=100; j++) path[j] = 0; // initial path
+    for (j=0; j<=100; j++) prop[j] = 0; // initial probability
+    oldE = energy(path); // energy of the path
 }
