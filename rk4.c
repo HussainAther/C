@@ -30,4 +30,9 @@ main() {
 void runge4(double x, double y[], double step) { // rk subroutine
     double f(double x, double y[], int i); // mid-point for Runge-Kutta
     double h =step/2, t1[N], t2[N], t3[N], k1[N], k2[N], k3[N], k4[N];
+    int i;
+    for (i=0; i<N; i++) t1[i]=y[i]+.5*(k1[i] = step*f(x, y, i));
+    for (i=0; i<N; i++) t2[i]=y[i]+.5*(k2[i] = step*f(x+h, t1, i));
+    for (i=0; i<N; i++) t3[i]=y[i]+   (k3[i] = step*f(x+h, t2, i));
+    for (i=0; i<N; i++) k4[i]= step*f(x + step, t3, i));
 }
