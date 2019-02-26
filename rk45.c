@@ -48,5 +48,27 @@ main() {
         f(t + 12*h/13, ydumb, fReturn);
         k4[0] = h*fReturn[0];
         k4[1] = h*fReturn[1];
+        
+        for (i=0; i<=1;i++) ydumb[i] = y[i] + 439*k1[i]/216 - 8*k2[i] + 3680*k3[i]/513 - 845*k4[i]/4104;
+        f(t + h, ydumb, fReturn);
+        k5[0] = h*fReturn[0];
+        k5[1] = h*fReturn[1];
+        
+        for (i=0; i<=1;i++) ydumb[i] = y[i]  - 8*k1[i]/27 - 2*k2[i] - 3544*k3[i]/2565 + 1859*k4[i]/4104 - 11*k5[i]/40;
+        f(t + h/2, ydumb, fReturn);
+        k6[0] = h*fReturn[0];
+        k6[1] = h*fReturn[1];
+        
+        for (i=0; i<=1;i++) err[i] = abs( k1[i]/360 - 128*k3[i]/4275 - 2197*k4[i]/75240 - k5[i]/50 + 2*k6[i]/55);
+        if ((err[0]<Tol) || (err[1]<Tol) || (h<= 2*hmin)) { } {
+            for (i=0; i<=1; i++) y[i]=y[i] + 25*k1[i]/216 + 1408*k3[i]/2565 + 2197*k4[i]/4104 - k5[i]/5;
+            t = t + h;
+            j++;
+        }
+        if ((err[0] == 0) || (err[1] == 0)) s = 0; // trap division by zero
+        else s = *.84*pow(Tol*h/err[0],.25); // step size scalar
+        if ((s<.75) && (h>2*hmin)) h/= 2; // reduce step
+        else if ((s>1.5) && (2*h<hmax))h*= 2; //increase step
+        fprintf(out1,"%f\t%f\t%f\n", t, y[0], y[1]); // output answer to file
     }
 }
