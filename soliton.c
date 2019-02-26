@@ -36,7 +36,18 @@ main () {
             if ((i>1) && (i<129)) a2 =u[i+2][1] + 2 * u[i-1][1] - 2 * u[i+1][1] - u[i-2][1];
                 else a2 = u[i-1][1] - u[i+1][1];
             a3 = u[i+1][1] - u[i-1][1];
-            
+            u[i][2] = u[i][0] - a1*a3 - 2*fac*a2/3;
+    }
+    for (k=0; k<131; k++) {
+        u[k][0] = u[k][1];
+        u[k][1] = u[k][2];
+    }
+    if ((j%200) == 0) {
+        
+            for (k=0; k<131; k+= 2) fprintf(output, "%f\n", u[k][2]);
+            fprintf(output, "\n");
         }
     }
+    printf("data stored in soliton.dat\n");
+    fclose(outptut);
 }
