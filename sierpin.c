@@ -14,3 +14,23 @@
 #define b1 20
 #define a2 320
 #define b2 20
+#define a3 170
+#define b3 280
+
+main() {
+
+    int i;
+    double x, y, r;
+    
+    FILE *output;
+    output = fopen("sierpin.dat", "w");
+    x = 180;
+    y = 150;
+    srand48(seed);
+    for (i=1; i<= max; i++) { // draw the gasket
+        r = drand48();
+        if ( r <= .3333) {
+            x
+        }
+    }
+}
