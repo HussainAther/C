@@ -41,3 +41,12 @@ main() {
     printf("data stored in qmc.dat\n");
     fclose(output)
 }
+
+double energy (double array[]) {
+    
+    int i;
+    double sum = 0;
+    for (i=0; i<100; i++)
+        {sum += pow(array[i+1]-array[i],2) + array[i]*array[i];}
+    return (sum);
+}
