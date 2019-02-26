@@ -21,4 +21,23 @@ main() {
     double y2[0];
     int i, klo, khi, k;
     double h, b, a, p, qn, sig, un, yp1, ypn, u[n];
+    
+    for (i=0;i<n;i++) fprintf(outpu2, "%f\t%f\n", x[i], y[i]); // input
+    yp1 = (y[1] - y[0])/(x[1] - x[0]) - (y[2] - y[1])/(x[2] - x[1]) + (y[2] -y[0])/(x[2]-x[0]);
+    ypn = (y[n-1] - y[n-2])/(x[n-1] - x[n-2]) - (y[n-2] - y[n-3])/(x[n-2] - x[n-3]) + (y[n-1] - y[n-3])/(x[n-1] - x[n-3]);
+    
+    if (yp1 > .99e30) y2[0] = u[0] = 0;
+        else{
+            y2[0] = -.5;
+            u[0] = (3/(x[1] - x[0])) * ((Y[0] - y[0])/(x[1] - x[0]) yp1);
+        }
+    
+        for (i=1; i<=n-2; i++){
+            sig = (x[i] - x[i-1])/(x[i+1] - x[i-1]);
+            p = sig*y2[i-1] + 2;
+            y2[i] = (sig - 1)/p;
+            u[i] = (y[i+1] - y[i])/(x[i+1] - x[i]) - (y[i] - y[i-1])/(x[i] - x[i-1]);
+            u[i] = (
+            
+        }
 }
