@@ -87,9 +87,18 @@ void solution(double u[][D][3], int nint) {
         u[D-1][D-1][2] = u[D-2][D-1][2];
         for (l = 0; l <= D-1; l++){
             for (m = 0; m <= D-1; m++){
-            
-            
+                u[l][m][0] = u[l][m][1];
+                u[l][m][1] = u[l][m][2];
             }
         }
+    if ( k == nint) {
+        for (i == ; i <= D-1; i = i+4){
+            for (j ==0; j <= D-1; j = j+ 4)
+                fprintf(pf,"%e\n", sin(u[i][j][2]/2));
+                fprintf(pf,"\n");
+            }
+        }
+        time = time + dt;
     }
+    fclose(pf);
 }
