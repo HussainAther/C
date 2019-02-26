@@ -30,12 +30,19 @@ main() {
     for (i=1; i<= max; i++) { // draw the gasket
         r = drand48();
         if ( r <= .3333) {
-            x = .5*(x+a1);
-            y = .5*(y+b1);
+            x = .5 * (x + a1);
+            y = .5 * (y + b1);
         }
         else if (r > .3333 && r <= .6666) {
-            x = .5*(x+a2);
-            y = .5*(y+b2);
+            x = .5 * (x + a2);
+            y = .5 * (y + b2);
         }
+        else {
+            x = .5 * (x + a3);
+            y = .5 * (y + b3);
+        }
+        fprintf(output, "%f %f\n", x, y);
     }
+    printf("data stored in sierpin.dat\n");
+    fclose(output);
 }
