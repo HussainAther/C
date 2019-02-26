@@ -72,3 +72,10 @@ main() {
         fprintf(out1,"%f\t%f\t%f\n", t, y[0], y[1]); // output answer to file
     }
 }
+
+void f(double t, double y[], double fReturn[]) {
+                            // RHS function
+    fReturn[0] = y[1]; // RHS of first equation
+    fReturn[1] = -6.0*pow(y[0], 5); // RHS of second equations
+    return;
+}
