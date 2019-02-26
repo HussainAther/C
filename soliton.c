@@ -22,7 +22,12 @@ main () {
     u[130][2] = 0;
     fac = mu*dt/(ds*ds*ds);
     time = dt;
-    for (i=1; i<130; i++) {
-    
+    for (i=1; i<130; i++) { // first time step
+        a1 = eps*dt*(u[i+1][0] + u[i][0] + u[i-1][0]) / (ds*6);
+        if ((i>1) && (i<129)) a2=u[i+2][0] + 2*u[i-1][0] - 2*u[i+1][0] - u[i-2][0];
+            else a2 = u[i-1][0] - u[i-1][0];
+        a3 = u[i+1][0] - u[i-1][0];
+        u[i][1] = u[i][0] - a1*a3 - fac*a2/3;
+        
     }
 }
