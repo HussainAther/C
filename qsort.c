@@ -1,4 +1,4 @@
-# Sort a file of integers
+/* Sort a file of integers
  int intcomp(int *x, int *y)
       {   return *x - *y; }
       int a[1000000];
