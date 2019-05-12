@@ -106,3 +106,8 @@ int main()
 	M(free(malloc(16)););
 	M(free(malloc(100)););
 	M(free(malloc(2000)););
+	printf("  Secs: %4.2f\n",
+        ((double) clock()-globalstart)
+        / CLOCKS_PER_SEC);
+	return 0;
+}
