@@ -14,3 +14,10 @@ int n;
 int intcmp(int *i, int *j)
 {   return *i - *j; }
 
+#define swapmac(i, j) { t = x[i]; x[i] = x[j]; x[j] = t; }
+
+void swapfunc(int i, int j)
+ {  int t = x[i];
+        x[i] = x[j];
+        x[j] = t;
+ }
