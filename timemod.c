@@ -48,3 +48,15 @@ int maxfunc(int a, int b)
                 n*n * TRIALS * CLOCKS_PER_SEC); 
         printf("%8.0f\n", nans);
 
+int main()
+{   int i, j, k;
+        float fi, fj, fk;
+        int t, ex, timesum, start, globalstart;
+	double nans;
+	globalstart = clock();
+	for (i = 0; i < n; i++)
+        	x[i] = rand();
+	n = startn;
+	printf("0C Time Cost Model, n=%d\n", n);
+	T("Integer Arithmetic");
+	M({});
