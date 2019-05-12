@@ -21,3 +21,8 @@ void swapfunc(int i, int j)
         x[i] = x[j];
         x[j] = t;
  }
+
+#define maxmac(a, b) ((a) > (b) ? (a) : (b))
+
+int maxfunc(int a, int b)
+{       return a > b ? a : b; }
