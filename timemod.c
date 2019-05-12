@@ -9,4 +9,8 @@ int x[MAXN];
 int startn = 5000;
 int n;
 
+/* Functions to time */
+
+int intcmp(int *i, int *j)
+{   return *i - *j; }
 
