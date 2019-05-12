@@ -26,3 +26,25 @@ void swapfunc(int i, int j)
 
 int maxfunc(int a, int b)
 {       return a > b ? a : b; }
+
+
+#define T(s) printf("%s (n=%d)\n", s, n);
+#define TRIALS 5
+#define M(op)
+        printf(" %-22s", #op);
+        k = 0;
+        timesum = 0;
+        for (ex = 0; ex < TRIALS; ex++) {
+                start = clock();
+                for (i = 1; i <= n; i++) {
+			fi = (float) i;
+			for (j = 1; j <= n; j++) {
+				op; 
+			} t = clock()-start; 
+		}
+		printf("%6d", t); 
+		timesum += t; 
+	} nans = 1e9 * timesum / ((double) 
+                n*n * TRIALS * CLOCKS_PER_SEC); 
+        printf("%8.0f\n", nans);
+
