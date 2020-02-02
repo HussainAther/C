@@ -1,5 +1,5 @@
 // Ising.c: ising model of magnetic dipole string
-// Plot without conecting datapoints with lines
+// Plot without connecting datapoints with lines
 
 #include <stdio.h>
 #include <stdlib.h>
